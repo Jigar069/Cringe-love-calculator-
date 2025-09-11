@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cringe Love Calculator 💘</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="title" content="Cringe Love Calculator 💘 - Viral & Funny Love Test">
+  <meta name="description" content="Enter your name and your crush’s name to see how cringe your love story is. 100% fun, 200% drama 😂">
+  <meta name="keywords" content="love calculator, funny love, cringe test, bhai zone, meme tool, love match, comedy tool">
+  <meta name="author" content="Your Name or Brand">
+  <meta property="og:title" content="Cringe Love Calculator 💘">
+  <meta property="og:description" content="Check your love percentage with full cringe vibes 😂💔">
+  <meta property="og:image" content="https://yoursite.com/logo.png">
+  <meta property="og:url" content="https://yoursite.com">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- AdSense का मुख्य code, इसे <head> में ही रखें -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7545610262066917" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      margin: 0;
+    }
+    h1 {
+      color: #ff3366;
+      font-size: 32px;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      width: 200px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #ff3366;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #333;
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      max-width: 300px;
+      text-align: center;
+    }
+    .share-btn {
+      margin-top: 15px;
+      background-color: #25D366;
+    }
+    .adsense-container {
+      margin-top: 30px;
+    }
+    .social-share-container {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    .social-share-container button {
+      background-color: #fff;
+      color: #333;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .social-share-container button i {
+      font-size: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <h1><span style="color:#ff3366;">❤️ Cringe Love </span><span style="color:#333;">Calculator</span> 💘</h1>
+
+  <input type="text" id="name1" placeholder="Tumhara naam">
+  <input type="text" id="name2" placeholder="Uska naam">
+  <br>
+  <button onclick="calculateLove()">Dekho Mohabbat Ki Aukaat</button>
+
+  <div id="result" style="display:none;"></div>
+
+  <div class="social-share-container" style="display:none;" id="shareContainer">
+    <button class="share-btn" id="whatsappShareBtn" onclick="shareSocial('whatsapp')"><i class="fab fa-whatsapp"></i></button>
+    <button class="share-btn" id="facebookShareBtn" onclick="shareSocial('facebook')"><i class="fab fa-facebook-f"></i></button>
+    <button class="share-btn" id="twitterShareBtn" onclick="shareSocial('twitter')"><i class="fab fa-x-twitter"></i></button>
+  </div>
+  
+  <button id="resetBtn" style="display:none;" onclick="resetCalculator()">फिर से करें</button>
+
+  <!-- Google AdSense Ad Unit Block -->
+  <div class="adsense-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-7545610262066917"
+         data-ad-slot="1234567890"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <script>
+    function showAlert(message) {
+      const alertBox = document.createElement('div');
+      alertBox.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      `;
+      alertBox.innerHTML = `
+        <p>${message}</p>
+        <button onclick="this.parentNode.remove()" style="margin-top: 10px; padding: 5px 10px;">OK</button>
+      `;
+      document.body.appendChild(alertBox);
+    }
+
+    const messages = {
+      low: [
+        "ये दोस्ती हम नहीं तोड़ेंगे 🤝",
+        "प्यार तो है, पर शायद 'bhai' वाला ज्यादा है।",
+        "इस मोहब्बत को तो Google भी नहीं ढूँढ पाएगा।",
+        "लगता है इस रिश्ते में सिर्फ़ तुम ही serious हो 😂"
+      ],
+      medium: [
+        "प्यार का 50-50 ऑफर 🥳",
+        "अभी बात अधूरी है, और कोशिश करो।",
+        "प्यार और दोस्ती के बीच में अटके हो।",
+        "इस रिश्ते में कुछ तो है, बस पूरा नहीं है।"
+      ],
+      high: [
+        "वाह! रब ने बना दी जोड़ी! 💍",
+        "इतना सच्चा प्यार, लगता है कोई 'TV serial' चल रहा है।",
+        "मोहब्बत हो तो ऐसी।",
+        "इस प्यार की कहानी इतिहास के पन्नों में लिखी जाएगी। ✨"
+      ]
+    };
+
+    function calculateLove() {
+      const name1 = document.getElementById('name1').value.trim();
+      const name2 = document.getElementById('name2').value.trim();
+      if (!name1 || !name2) {
+        showAlert("दोनों के नाम डालें पहले 😒");
+        return;
+      }
+
+      const percent = Math.floor(Math.random() * 100) + 1;
+      let message;
+
+      if (percent < 30) {
+        message = messages.low[Math.floor(Math.random() * messages.low.length)];
+      } else if (percent >= 30 && percent < 70) {
+        message = messages.medium[Math.floor(Math.random() * messages.medium.length)];
+      } else {
+        message = messages.high[Math.floor(Math.random() * messages.high.length)];
+      }
+
+      const resultText = `${name1} ❤️ ${name2} = ${percent}% Love\n\n"${message}"`;
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerText = resultText;
+
+      const shareContainer = document.getElementById('shareContainer');
+      shareContainer.style.display = 'flex';
+      
+      const resetBtn = document.getElementById('resetBtn');
+      resetBtn.style.display = 'inline-block';
+    }
+
+    function shareSocial(platform) {
+      const resultText = document.getElementById('result').innerText;
+      let url = "";
+
+      switch(platform) {
+        case 'whatsapp':
+          url = `https://wa.me/?text=${encodeURIComponent(resultText + "\n\nअपनी मोहब्बत की औकात देखो: yoursite.com 😂")}`;
+          break;
+        case 'facebook':
+          url = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(resultText)}&u=yoursite.com`;
+          break;
+        case 'twitter':
+          url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(resultText)}&url=yoursite.com`;
+          break;
+      }
+      window.open(url, "_blank");
+    }
+
+    function resetCalculator() {
+      document.getElementById('name1').value = "";
+      document.getElementById('name2').value = "";
+      document.getElementById('result').style.display = 'none';
+      document.getElementById('shareContainer').style.display = 'none';
+      document.getElementById('resetBtn').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
